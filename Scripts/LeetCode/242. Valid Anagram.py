@@ -1,3 +1,11 @@
+"""
+Valid Anagram
+
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+HashMap y conteo de caracteres
+"""
+
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         # Primer filtro, si s y t no tienen la misma longitud, no pueden ser anagramas

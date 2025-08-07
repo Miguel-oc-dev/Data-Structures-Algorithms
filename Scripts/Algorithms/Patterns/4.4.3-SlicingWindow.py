@@ -29,6 +29,19 @@ print(fixed_window(nums, k))
 
 
 
+def fixed_sliding_window(nums, k):
+    window_sum = sum(nums[:k])
+    max_sum = window_sum
+
+    for i in range(k, len(nums)):
+        window_sum += nums[i] - nums[i - k]
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum
+
+
+
+
 # Dynamic Sliding Window
 # Se usa cuando la longitud de la ventana depende de alguna condicion, como una sua o caracteres unicos
 
@@ -57,3 +70,21 @@ def dynamic_window(s):
 
 s = "abcabcbb"
 print(dynamic_window(s))
+
+
+
+def sliding_window(s):
+    left = 0
+    window = set()  # o dict, Counter dependiendo del problema
+    max_len = 0
+
+    for right in range(len(s)):
+        # Expandir la ventana
+        while s[right] in window:
+            window.remove(s[left])
+            left += 1
+
+        window.add(s[right])
+        max_len = max(max_len, right - left + 1)
+
+    return max_len

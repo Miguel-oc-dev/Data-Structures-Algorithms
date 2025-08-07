@@ -3,18 +3,22 @@ class ListNode:
         self.val = x
         self.next = None
 
-class FastAndSlowPointers:
-    # LeetCode 141 - Linked List Cycle (HashSet Approach)
-    def hasCycleHashSetApproach(self, head):
-        visited = set()
-        current = head
-        while current:
-            if current in visited:
-                return True
-            visited.add(current)
-            current = current.next
-        return False
 
+def fast_slow(head):
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            return True  # o encontrar el punto de entrada al ciclo
+
+    return False
+
+
+class FastAndSlowPointers:
     # LeetCode 141 - Linked List Cycle (Fast and Slow Pointer Approach)
     def hasCycleFastAndSlowPointersApproach(self, head):
         if not head or not head.next:

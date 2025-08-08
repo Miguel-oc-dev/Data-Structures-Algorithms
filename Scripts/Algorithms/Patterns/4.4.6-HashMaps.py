@@ -13,3 +13,17 @@ def use_hash_map(arr):
             return [hashmap[complement], i]
 
     return hashmap  # o el resultado buscado
+
+
+def hashmap_pattern(arr):
+    seen = set()
+
+    for num in arr:
+        complement = target - num
+        if complement in seen:
+            return True
+        seen.add(num)
+
+    return False
+
+
